@@ -1,13 +1,15 @@
-import React from 'react';
-import { Router, Route } from 'dva/router';
+import React, { Component } from 'react';
+import {
+  Router,
+  Route,
+} from 'dva/router';
+
 import IndexPage from './routes/IndexPage';
 
-function RouterConfig({ history }) {
+export default ({ history }) => {
   return (
     <Router history={history}>
-      <Route path="/" component={IndexPage} />
+      <Route path="/" component={IndexPage}></Route>
     </Router>
   );
 }
-
-export default RouterConfig;
