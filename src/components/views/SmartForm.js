@@ -7,6 +7,7 @@ import {
   Switch,
   DatePicker,
 } from 'antd';
+import PropTypes from 'prop-types';
 
 import styles from './SmartForm.css';
 
@@ -26,37 +27,37 @@ class SmartForm extends React.Component {
 
   static propTypes = {
     /** 表单对象 */
-    form: React.PropTypes.object.isRequired,
+    form: PropTypes.object.isRequired,
     /** 表单序列化模式 */
-    schema: React.PropTypes.shape({
+    schema: PropTypes.shape({
       /** 表单列的标识 */
-      key: React.PropTypes.string.isRequired,
+      key: PropTypes.string.isRequired,
       /** 表单列的名称 */
-      label: React.PropTypes.string.isRequired,
+      label: PropTypes.string.isRequired,
       /** 表单列的提示信息 */
-      placeholder: React.PropTypes.string,
+      placeholder: PropTypes.string,
       /** 表单列的值 */
-      value: React.PropTypes.any,
+      value: PropTypes.any,
       /** 表单列的验证规则 */
-      rules: React.PropTypes.array,
+      rules: PropTypes.array,
       /** 表单列的类型 */
-      itemType: React.PropTypes.string,
+      itemType: PropTypes.string,
       /** 表单列为“radio”、“select”的选项 */
-      options: React.PropTypes.arrayOf(React.PropTypes.shape({
+      options: PropTypes.arrayOf(PropTypes.shape({
         /** 选项 */
-        label: React.PropTypes.any.isRequired,
+        label: PropTypes.any.isRequired,
         /** 值 */
-        value: React.PropTypes.any.isRequired,
+        value: PropTypes.any.isRequired,
       })),
       /** 表单列为开关时的显示选项['开','关'] */
-      switchLabel: React.PropTypes.arrayOf(React.PropTypes.string),
+      switchLabel: PropTypes.arrayOf(PropTypes.string),
       /** 表单列为日期选项 */
-      moment: React.PropTypes.any,
+      moment: PropTypes.any,
       /** 表单列是否禁用 */
-      disabled: React.PropTypes.bool,
+      disabled: PropTypes.bool,
     }).isRequired,
-    labelCol: React.PropTypes.object,
-    wrapperCol: React.PropTypes.object,
+    labelCol: PropTypes.object,
+    wrapperCol: PropTypes.object,
   }
 
   static defaultProps = {

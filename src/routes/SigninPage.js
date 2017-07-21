@@ -6,6 +6,7 @@ import {
   Button,
   message,
 } from 'antd';
+import PropTypes from 'prop-types';
 import { connect } from 'dva';
 
 import SmartForm, { ItemType } from '../components/views/SmartForm';
@@ -15,8 +16,8 @@ import styles from './SigninPage.css';
 class SigninPage extends React.PureComponent {
 
   static propTypes = {
-    dispatch: React.PropTypes.func.isRequired,
-    form: React.PropTypes.object.isRequired,
+    dispatch: PropTypes.func.isRequired,
+    form: PropTypes.object.isRequired,
   }
 
   schemas = [
