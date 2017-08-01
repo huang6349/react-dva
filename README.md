@@ -22,6 +22,11 @@
 [安装依赖]  
 
 ```bash
+node >= 4.0.0
+```
+
+```bash
+$ npm install -g dva-cli yarn
 $ yarn install
 ```
 
@@ -31,14 +36,14 @@ $ yarn install
 #### development[开发环境]  
 
 ```bash
-$ npm start
+$ yarn start
 ```
 访问：[http://127.0.0.1:8000](http://127.0.0.1:8000)  
 
 #### production[生产环境]
 
 ```bash
-$ npm run build
+$ yarn run build
 ```
 
 # Links  
