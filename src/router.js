@@ -8,11 +8,15 @@ import IndexPage from './routes/IndexPage';
 
 import SigninPage from "./routes/SigninPage.js";
 
+import MainLayout from "./routes/MainLayout.js";
+
 export default ({ history }) => {
   return (
     <Router history={history}>
-      <Route path="/" component={IndexPage}></Route>
       <Route path="/signin" component={SigninPage} />
+      <Route component={MainLayout}>
+        <Route path="/" component={IndexPage} />
+      </Route>
     </Router>
   );
 }
