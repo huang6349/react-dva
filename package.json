@@ -14,6 +14,9 @@
   "dependencies": {
     "antd": "^2.12.1",
     "babel-runtime": "^6.9.2",
+    "css-floats": "^1.0.7",
+    "css-spacing": "^1.0.6",
+    "css-text-align": "^1.0.6",
     "dva": "^1.2.1",
     "prop-types": "^15.5.10",
     "qs": "^6.5.0",

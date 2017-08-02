@@ -1499,6 +1499,10 @@ css-color-names@0.0.4:
   version "0.0.4"
   resolved "http://registry.npm.taobao.org/css-color-names/download/css-color-names-0.0.4.tgz#808adc2e79cf84738069b646cb20ec27beb629e0"
 
+css-floats@^1.0.7:
+  version "1.0.7"
+  resolved "http://registry.npm.taobao.org/css-floats/download/css-floats-1.0.7.tgz#6b430514d4cdd1dcac2933d747e4ddd0bf91e44f"
+
 css-loader@^0.26.1:
   version "0.26.4"
   resolved "http://registry.npm.taobao.org/css-loader/download/css-loader-0.26.4.tgz#b61e9e30db94303e6ffc892f10ecd09ad025a1fd"
@@ -1523,6 +1527,14 @@ css-selector-tokenizer@^0.7.0:
     cssesc "^0.1.0"
     fastparse "^1.1.1"
     regexpu-core "^1.0.0"
+
+css-spacing@^1.0.6:
+  version "1.0.6"
+  resolved "http://registry.npm.taobao.org/css-spacing/download/css-spacing-1.0.6.tgz#1e499b85f5d0773c85d7557fc839df7ee64c9bfb"
+
+css-text-align@^1.0.6:
+  version "1.0.6"
+  resolved "http://registry.npm.taobao.org/css-text-align/download/css-text-align-1.0.6.tgz#4d102a2fe5f061fcef112b2f96672dedbd60d068"
 
 cssesc@^0.1.0:
   version "0.1.0"
