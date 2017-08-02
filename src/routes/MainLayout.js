@@ -49,6 +49,9 @@ class MainLayout extends React.PureComponent {
           collapsedWidth="64"
           breakpoint="md"
           className={styles['ant-layout-sider']}>
+          <Layout.Header className={styles['ant-layout-logo']}>
+            {this.state.collapsed ? 'RD' : 'REACT-DVA'}
+          </Layout.Header>
         </Layout.Sider>
         <Layout>
           <Layout.Header className={styles['ant-layout-header']}>
