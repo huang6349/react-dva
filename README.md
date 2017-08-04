@@ -7,7 +7,7 @@
 
 * UI : Ant.Design  
 
-# Table of Contents  
+## Table of Contents  
 [目录]  
 
 * [Install[安装依赖]](#install)  
@@ -18,7 +18,7 @@
 
 * [License[开源协议]](#license)  
 
-# Install  
+## Install  
 [安装依赖]  
 
 ```bash
@@ -30,7 +30,7 @@ $ npm install -g dva-cli yarn
 $ yarn install
 ```
 
-# Usage  
+## Usage  
 [用法]  
 
 #### development[开发环境]  
@@ -46,7 +46,7 @@ $ yarn start
 $ yarn run build
 ```
 
-# Links  
+## Links  
 [教程链接]  
 
 * [facebook/react](https://github.com/facebook/react)  
@@ -58,7 +58,7 @@ $ yarn run build
 * [mrmrs/css-floats](https://github.com/mrmrs/css-floats)
 * [mrmrs/css-text-align](https://github.com/mrmrs/css-text-align)
 
-# License  
+## License  
 [开源协议]  
 
 [MIT](https://tldrlegal.com/license/mit-license)
