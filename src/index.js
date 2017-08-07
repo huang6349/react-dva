@@ -17,6 +17,7 @@ const app = dva();
 
 // 3. 注册数据模型
 // app.model(require('./models/example'));
+app.model(require("./models/sidebar"));
 
 // 4. 注册路由
 app.router(require('./router'));

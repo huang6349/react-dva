@@ -7,17 +7,85 @@ import {
   Avatar,
   Icon,
   Button,
+  Menu,
 } from 'antd';
 import PropTypes from 'prop-types';
 import { connect } from 'dva';
+import { Link } from 'dva/router';
 
 import styles from './MainLayout.css';
+
+class Sidebar extends React.Component {
+
+  static propTypes = {
+    menus: PropTypes.array.isRequired,
+  }
+
+  state = {
+    current_name: 'id',
+    parent_name: 'parent_id',
+    child_name: 'childs',
+    title_name: 'name',
+    icon_name: 'icon',
+    url_name: 'url',
+    pid: null,
+  }
+
+  transformMenusData(items = [], config = {}) {
+    const current_name = config.current_name || this.state.current_name;
+    const parent_name = config.parent_name || this.state.parent_name;
+    const pid = config.pid || this.state.pid;
+    const child_name = config.child_name || this.state.child_name;
+    let menus = [];
+    Array.from(items).forEach((item, index, array) => {
+      if (item[parent_name] === pid) {
+        let menu = Object.assign([], item);
+        menu[child_name] = Object.assign([], this.transformMenusData(items, Object.assign(config, { pid: item[current_name] })));
+        menus.push(menu);
+      }
+    });
+    return menus;
+  }
+
+  createMenus(items = [], config = {}) {
+    const current_name = config.current_name || this.state.current_name;
+    const title_name = config.title_name || this.state.title_name;
+    const icon_name = config.icon_name || this.state.icon_name;
+    const url_name = config.url_name || this.state.url_name;
+    const child_name = config.child_name || this.state.child_name;
+    return Array.from(items).map((item, index, array) => {
+      let title = item[icon_name] ? <span><Icon type={item[icon_name]} /><span>{item[title_name]}</span></span> : item[title_name];
+      if (item[child_name] && item[child_name].length > 0) {
+        return (
+          <Menu.SubMenu key={item[current_name]} title={title}>
+            {this.createMenus.bind(this)(item[child_name])}
+          </Menu.SubMenu>
+        );
+      } else {
+        return (
+          <Menu.Item key={item[current_name]}>
+            <Link to={item[url_name]}>{title}</Link>
+          </Menu.Item>
+        );
+      }
+    });
+  }
+
+  render() {
+    return (
+      <Menu theme="dark" mode="inline">
+        {this.createMenus.bind(this)(this.transformMenusData.bind(this)(this.props.menus))}
+      </Menu>
+    );
+  }
+}
 
 class MainLayout extends React.PureComponent {
 
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
     children: PropTypes.element.isRequired,
+    sidebar: PropTypes.object.isRequired,
   }
 
   state = {
@@ -52,6 +120,7 @@ class MainLayout extends React.PureComponent {
           <Layout.Header className={styles['ant-layout-logo']}>
             {this.state.collapsed ? 'RD' : 'REACT-DVA'}
           </Layout.Header>
+          <Sidebar menus={this.props.sidebar.menus} />
         </Layout.Sider>
         <Layout>
           <Layout.Header className={styles['ant-layout-header']}>
@@ -88,7 +157,7 @@ class MainLayout extends React.PureComponent {
 }
 
 function mapStateToProps(state) {
-  return {};
+  return { sidebar: state['SIDEBAR'] };
 }
 
 export default connect(mapStateToProps)(MainLayout);
