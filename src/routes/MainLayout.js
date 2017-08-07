@@ -10,6 +10,7 @@ import {
   Menu,
 } from 'antd';
 import PropTypes from 'prop-types';
+import { isEqual, last, uniq, filter } from 'underscore';
 import { connect } from 'dva';
 import { Link } from 'dva/router';
 
@@ -22,6 +23,8 @@ class Sidebar extends React.Component {
   }
 
   state = {
+    selectedKeys: [],
+    openKeys: [],
     current_name: 'id',
     parent_name: 'parent_id',
     child_name: 'childs',
@@ -29,6 +32,42 @@ class Sidebar extends React.Component {
     icon_name: 'icon',
     url_name: 'url',
     pid: null,
+  }
+
+  handleChange(openKeys) {
+    const state = this.state;
+    const current_name = this.state.current_name;
+    let nextOpenKeys = [];
+    if (openKeys && openKeys.length > 0) {
+      const latestOpenKey = last(openKeys);
+      Array.from(this.props.menus || []).forEach((value, index, array) => {
+        if (isEqual(`${value[current_name]}`, `${latestOpenKey}`)) {
+          nextOpenKeys = nextOpenKeys.concat(this.getAncestorKeys(array, value[current_name]));
+        }
+      });
+    }
+    this.setState({ openKeys: nextOpenKeys });
+  }
+
+  getAncestorKeys(items = [], id, config = {}) {
+    const current_name = config.current_name || this.state.current_name;
+    const parent_name = config.parent_name || this.state.parent_name;
+    let openKeys = [`${id}`];
+    Array.from(items).forEach((value, index, array) => {
+      if (value[parent_name] && isEqual(`${value[current_name]}`, `${id}`)) {
+        openKeys = openKeys.concat(this.getAncestorKeys(items, value[parent_name])).concat(`${value[parent_name]}`);
+      }
+    });
+    return uniq(openKeys);
+  }
+
+  handleClick({ item, key, keyPath }) {
+    this.setState({
+      selectedKeys: [key],
+      openKeys: filter(keyPath, function (keys) {
+        return !isEqual(keys, key);
+      }),
+    });
   }
 
   transformMenusData(items = [], config = {}) {
@@ -73,7 +112,7 @@ class Sidebar extends React.Component {
 
   render() {
     return (
-      <Menu theme="dark" mode="inline">
+      <Menu theme="dark" mode="inline" selectedKeys={this.state.selectedKeys} openKeys={this.state.openKeys} onOpenChange={this.handleChange.bind(this)} onClick={this.handleClick.bind(this)} multiple={false}>
         {this.createMenus.bind(this)(this.transformMenusData.bind(this)(this.props.menus))}
       </Menu>
     );
