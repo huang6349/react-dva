@@ -27,9 +27,9 @@ export default {
         {
           id: 101,
           parent_id: 1,
-          name: '选项1',
+          name: '首页',
           icon: null,
-          url: null,
+          url: '/',
         },
         {
           id: 102,
@@ -105,20 +105,6 @@ export default {
           id: 304,
           parent_id: 3,
           name: '选项12',
-          icon: null,
-          url: null,
-        },
-        {
-          id: 1041,
-          parent_id: 104,
-          name: '选项4.1',
-          icon: null,
-          url: null,
-        },
-        {
-          id: 10411,
-          parent_id: 1041,
-          name: '选项4.1.1',
           icon: null,
           url: null,
         },
