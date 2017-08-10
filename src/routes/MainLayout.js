@@ -14,6 +14,7 @@ import { isEqual, isEmpty, last, uniq, filter, difference } from 'underscore';
 import { connect } from 'dva';
 import { Link } from 'dva/router';
 
+import { Bread } from '../components/layout';
 import { MENU } from '../utils/constants';
 
 import styles from './MainLayout.css';
@@ -217,6 +218,8 @@ class MainLayout extends React.PureComponent {
     dispatch: PropTypes.func.isRequired,
     children: PropTypes.element.isRequired,
     location: PropTypes.object.isRequired,
+    routes: PropTypes.array.isRequired,
+    params: PropTypes.object.isRequired,
     sidebar: PropTypes.object.isRequired,
   }
 
@@ -271,9 +274,7 @@ class MainLayout extends React.PureComponent {
             </Row>
           </Layout.Header>
           <Layout.Header className={styles['ant-layout-breadcrumb']}>
-            <Breadcrumb>
-              <Breadcrumb.Item>首页</Breadcrumb.Item>
-            </Breadcrumb>
+            <Bread menus={this.props.sidebar.menus} pathname={this.props.location.pathname}></Bread>
           </Layout.Header>
           <Layout className={styles['ant-layout-main']}>
             <Layout.Content
