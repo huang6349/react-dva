@@ -9,7 +9,7 @@ import {
 import PropTypes from 'prop-types';
 import { connect } from 'dva';
 
-import { Sidebar, Bread, Footer } from '../components/layout';
+import { Header, Sidebar, Bread, Footer } from '../components/layout';
 
 import styles from './MainLayout.css';
 
@@ -58,19 +58,7 @@ class MainLayout extends React.PureComponent {
         </Layout.Sider>
         <Layout>
           <Layout.Header className={styles['ant-layout-header']}>
-            <Row type="flex" justify="space-between">
-              <Col xs={0} sm={0} md={12}>
-                <Button type="primary" onClick={this.toggleCollapsed.bind(this)}>
-                  <Icon type={this.state.collapsed ? 'menu-unfold' : 'menu-fold'}></Icon>
-                </Button>
-              </Col>
-              <Col xs={24} sm={24} md={12} className="tr">
-                <Icon className="mrxs" type="question-circle-o" />
-                <span className="mrm">帮助</span>
-                <span>设置</span>
-                <span className="mlm">退出登录</span>
-              </Col>
-            </Row>
+            <Header collapsed={this.state.collapsed} toggle={this.toggleCollapsed.bind(this)}></Header>
           </Layout.Header>
           <Layout.Header className={styles['ant-layout-breadcrumb']}>
             <Bread menus={this.props.sidebar.menus} pathname={this.props.location.pathname}></Bread>
