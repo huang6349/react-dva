@@ -14,6 +14,8 @@ import { isEqual, isEmpty, last, uniq, filter, difference } from 'underscore';
 import { connect } from 'dva';
 import { Link } from 'dva/router';
 
+import { MENU } from '../utils/constants';
+
 import styles from './MainLayout.css';
 
 class Sidebar extends React.Component {
@@ -31,17 +33,24 @@ class Sidebar extends React.Component {
   PREFIX_ITEM = 'item';
   inlineCollapsed;
   inlineOpenKeys = [];
-  current_name = 'id';
-  parent_name = 'parent_id';
-  child_name = 'childs';
-  title_name = 'name';
-  icon_name = 'icon';
-  url_name = 'url';
-  pid = null;
+  current_name;
+  parent_name;
+  child_name;
+  title_name;
+  icon_name;
+  url_name;
+  pid;
   constructor(props) {
     super(props);
 
     this.inlineCollapsed = this.props.inlineCollapsed;
+    this.current_name = MENU.ID;
+    this.parent_name = MENU.PARENT_ID;
+    this.child_name = MENU.CHILD;
+    this.title_name = MENU.NAME;
+    this.icon_name = MENU.ICON;
+    this.url_name = MENU.URL;
+    this.pid = MENU.PID;
   }
   componentWillMount() {
     // 导航菜单[设置默认展开项和选中项]
