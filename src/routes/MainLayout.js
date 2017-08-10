@@ -9,7 +9,7 @@ import {
 import PropTypes from 'prop-types';
 import { connect } from 'dva';
 
-import { Sidebar, Bread } from '../components/layout';
+import { Sidebar, Bread, Footer } from '../components/layout';
 
 import styles from './MainLayout.css';
 
@@ -80,7 +80,9 @@ class MainLayout extends React.PureComponent {
               children={this.props.children}
               className={styles['ant-layout-content']}>
             </Layout.Content>
-            <Layout.Footer className={styles['ant-layout-footer']}>Ant&nbsp;Design&nbsp;版权所有&nbsp;©&nbsp;2015&nbsp;由蚂蚁金服体验技术部支持</Layout.Footer>
+            <Layout.Footer className={styles['ant-layout-footer']}>
+              <Footer></Footer>
+            </Layout.Footer>
           </Layout>
         </Layout>
       </Layout>
