@@ -69,11 +69,11 @@ class Sidebar extends React.Component {
       this.inlineOpenKeys = [];
     }
     if (!isEqual(this.props.menus, nextProps.menus)) {
-      // 导航菜单[设置序列化导航菜单项的数据]
-      this.setMenus(nextProps.menus);
       // 导航菜单[设置默认展开项和选中项]
       this.setDefaultKeys(nextProps.menus);
     }
+    // 导航菜单[设置序列化导航菜单项的数据]
+    this.setMenus(nextProps.menus);
   }
   setMenus(menus) {
     // 设置序列化导航菜单项的数据
