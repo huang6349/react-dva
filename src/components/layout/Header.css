@@ -1,3 +1,7 @@
-
-.normal {
+.ant-layout-header {
+  height: 64px;
+  line-height: 64px;
+  padding: 0 24px;
+  background-color: rgba(255, 255, 255, 1);
+  border-bottom: 1px solid rgba(231, 234, 236, 1);
 }

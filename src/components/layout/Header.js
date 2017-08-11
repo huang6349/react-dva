@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {
+  Layout,
   Row,
   Col,
   Icon,
@@ -24,19 +25,21 @@ class Header extends React.Component {
 
   render() {
     return (
-      <Row type="flex" justify="space-between">
-        <Col xs={0} sm={0} md={12}>
-          <Button type="primary" onClick={this.toggle.bind(this)}>
-            <Icon type={this.props.collapsed ? 'menu-unfold' : 'menu-fold'}></Icon>
-          </Button>
-        </Col>
-        <Col xs={24} sm={24} md={12} className="tr">
-          <Icon className="mrxs" type="question-circle-o" />
-          <span className="mrm">帮助</span>
-          <span>设置</span>
-          <span className="mlm">退出登录</span>
-        </Col>
-      </Row>
+      <Layout.Header className={styles['ant-layout-header']}>
+        <Row type="flex" justify="space-between">
+          <Col xs={0} sm={0} md={12}>
+            <Button type="primary" onClick={this.toggle.bind(this)}>
+              <Icon type={this.props.collapsed ? 'menu-unfold' : 'menu-fold'}></Icon>
+            </Button>
+          </Col>
+          <Col xs={24} sm={24} md={12} className="tr">
+            <Icon className="mrxs" type="question-circle-o" />
+            <span className="mrm">帮助</span>
+            <span>设置</span>
+            <span className="mlm">退出登录</span>
+          </Col>
+        </Row>
+      </Layout.Header>
     );
   }
 }

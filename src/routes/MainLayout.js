@@ -58,9 +58,7 @@ class MainLayout extends React.PureComponent {
           <Sidebar menus={this.props.sidebar.menus} pathname={this.props.location.pathname} inlineCollapsed={this.state.collapsed} />
         </Layout.Sider>
         <Layout>
-          <Layout.Header className={styles['ant-layout-header']}>
-            <Header collapsed={this.state.collapsed} toggle={this.toggleCollapsed.bind(this)}></Header>
-          </Layout.Header>
+          <Header collapsed={this.state.collapsed} toggle={this.toggleCollapsed.bind(this)}></Header>
           <Layout.Header className={styles['ant-layout-breadcrumb']}>
             <Bread menus={this.props.sidebar.menus} pathname={this.props.location.pathname}></Bread>
           </Layout.Header>
