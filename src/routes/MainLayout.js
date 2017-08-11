@@ -7,6 +7,7 @@ import {
   Button,
 } from 'antd';
 import PropTypes from 'prop-types';
+import { Scrollbars } from 'react-custom-scrollbars';
 import { connect } from 'dva';
 
 import { Header, Sidebar, Bread, Footer } from '../components/layout';
@@ -63,15 +64,14 @@ class MainLayout extends React.PureComponent {
           <Layout.Header className={styles['ant-layout-breadcrumb']}>
             <Bread menus={this.props.sidebar.menus} pathname={this.props.location.pathname}></Bread>
           </Layout.Header>
-          <Layout className={styles['ant-layout-main']}>
-            <Layout.Content
-              children={this.props.children}
-              className={styles['ant-layout-content']}>
-            </Layout.Content>
-            <Layout.Footer className={styles['ant-layout-footer']}>
-              <Footer></Footer>
-            </Layout.Footer>
-          </Layout>
+          <Scrollbars className={styles['ant-layout-container']}>
+            <Layout className={styles['ant-layout-main']}>
+              <Layout.Content className={styles['ant-layout-content']} children={this.props.children}></Layout.Content>
+              <Layout.Footer className={styles['ant-layout-footer']}>
+                <Footer></Footer>
+              </Layout.Footer>
+            </Layout>
+          </Scrollbars>
         </Layout>
       </Layout>
     );
