@@ -4,11 +4,12 @@ import {
   Route,
 } from 'dva/router';
 
+import MainLayout from "./routes/MainLayout";
+
 import IndexPage from './routes/IndexPage';
+import SigninPage from "./routes/SigninPage";
 
-import SigninPage from "./routes/SigninPage.js";
-
-import MainLayout from "./routes/MainLayout.js";
+import { Error } from './components/views';
 
 export default ({ history }) => {
   return (
@@ -17,6 +18,7 @@ export default ({ history }) => {
       <Route component={MainLayout}>
         <Route path="/" component={IndexPage} />
       </Route>
+      <Route path="*" component={Error} />
     </Router>
   );
 }
