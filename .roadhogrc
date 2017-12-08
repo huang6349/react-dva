@@ -1,11 +1,9 @@
 {
   "entry": "src/index.js",
-  "disableCSSModules": false,
-  "publicPath": "/",
-  "outputPath": "./dist",
   "extraBabelPlugins": [
     "transform-runtime",
-    [ "import", { "libraryName": "antd", "libarayDirectory": "lib", "style": true } ]
+    ["import", { "libraryName": "antd", "libraryDirectory": "lib", "style": true }],
+    ["module-resolver", { "alias": { "dva": "dva-react-router-3" }}]
   ],
   "proxy": {},
   "env": {
@@ -13,11 +11,7 @@
       "extraBabelPlugins": [
         "dva-hmr"
       ]
-    },
-    "production": {
-      "extraBabelPlugins": []
     }
   },
   "theme": "./theme.js"
 }
- 
