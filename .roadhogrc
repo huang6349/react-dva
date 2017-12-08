@@ -4,35 +4,20 @@
   "publicPath": "/",
   "outputPath": "./dist",
   "extraBabelPlugins": [
-    [
-      "import",
-      {
-        "libraryName": "antd",
-        "libarayDirectory": "lib",
-        "style": true
-      }
-    ]
+    "transform-runtime",
+    [ "import", { "libraryName": "antd", "libarayDirectory": "lib", "style": true } ]
   ],
-  "extraPostCSSPlugins": [],
-  "autoprefixer": null,
   "proxy": {},
-  "externals": null,
-  "library": null,
-  "libraryTarget": null,
-  "multipage": false,
-  "define": null,
   "env": {
     "development": {
       "extraBabelPlugins": [
-        "dva-hmr",
-        "transform-runtime"
+        "dva-hmr"
       ]
     },
     "production": {
-      "extraBabelPlugins": [
-        "transform-runtime"
-      ]
+      "extraBabelPlugins": []
     }
   },
   "theme": "./theme.js"
 }
+ 
